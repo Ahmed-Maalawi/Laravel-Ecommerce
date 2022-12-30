@@ -3,6 +3,7 @@
 use App\Http\Controllers\Category\SubCategoryController;
 use App\Http\Controllers\Category\CategoryController;
 use App\Http\Controllers\Admin\AdminAuthController;
+use App\Http\Controllers\favourite\FavouriteController;
 use App\Http\Controllers\Product\ProductController;
 use App\Http\Controllers\User\UserAuthController;
 use App\Http\Controllers\Brand\BrandController;
@@ -118,5 +119,22 @@ Route::prefix('product')->group(function (){
         Route::get('get/{id}', 'show')->name('product.get');
         Route::post('update/{id}', 'update')->name('product.update');
         Route::delete('delete/{id}', 'destroy')->name('product.delete');
+        Route::post('add/images/{id}', 'addProductImages')->name('product.addProductImages');
+        Route::delete('delete/image/{id}', 'deleteImage')->name('product.deleteProductImage');
+
     });
+});
+
+
+
+/**
+|--------------------------------------------------------------------------
+| API Routes For FavouriteCart
+|--------------------------------------------------------------------------
+ */
+Route::controller(FavouriteController::class)->prefix('favourite')->group(function (){
+    Route::get('all', 'index')->name('favourite.all');
+    Route::post('add/{id}', 'store')->name('favourite.add');
+    Route::delete('remove/{id}', 'destroy')->name('favourite.remove');
+
 });

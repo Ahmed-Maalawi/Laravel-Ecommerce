@@ -61,7 +61,7 @@ class BrandController extends Controller
         return response()->json([
             'status' => 'success',
             'message' => 'brand created successfully',
-            'data' => $brand
+            'data' => BrandResource::make($brand)
         ], 201);
     }
 

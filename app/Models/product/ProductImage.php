@@ -1,20 +1,21 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\product;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Product;
 
-class Color extends Model
+class ProductImage extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-      'value', 'product_id'
+        'image_path', 'product_id'
     ];
 
     public function product()
     {
-        return $this->belongsTo(Product::class, 'product_id', 'id');
+        return $this->belongsTo(Product::class);
     }
 }

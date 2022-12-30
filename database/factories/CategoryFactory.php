@@ -17,7 +17,8 @@ class CategoryFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => fake()->text(),
+            'category_img' => fake()->imageUrl(),
         ];
     }
 }

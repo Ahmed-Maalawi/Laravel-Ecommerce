@@ -3,10 +3,16 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use App\Models\Admin;
-use App\Models\User;
-use App\Models\UserAddress;
+use App\Models\FavouriteItem;
+use App\Models\product\ProductImage;
 use Illuminate\Database\Seeder;
+use App\Models\SubCategory;
+use App\Models\Category;
+use App\Models\Product;
+use App\Models\Admin;
+use App\Models\Brand;
+use App\Models\Color;
+use App\Models\User;
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,14 +29,18 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@admin.com',
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-//            'remember_token' => Str::random(10),
         ]);
-//        $users = User::factory()->create(10);
-        // \App\Models\User::factory(10)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        $users = User::factory(10)->create();
+
+        $brands = Brand::factory()->count(10)->create();
+
+        $categories = Category::factory()
+            ->has(SubCategory::factory()->count(2))
+            ->count(2)->create();
+
+        $products = Product::factory(20)->create();
+
+        $favourites = FavouriteItem::factory(20)->create();
     }
 }

@@ -2,12 +2,13 @@
 
 namespace Database\Factories;
 
+use App\Models\product\ProductImage;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Brand>
+/**true
+ * @extends Factory<ProductImage>
  */
-class BrandFactory extends Factory
+class ProductImageFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,8 +18,7 @@ class BrandFactory extends Factory
     public function definition()
     {
         return [
-            'name' => fake()->name(),
-            'brand_img' => fake()->imageUrl(),
+            'image_path' => fake()->imageUrl(),
         ];
     }
 }

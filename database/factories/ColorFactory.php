@@ -2,10 +2,12 @@
 
 namespace Database\Factories;
 
+use App\Models\Color;
+use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Color>
+ * @extends Factory<Color>
  */
 class ColorFactory extends Factory
 {
@@ -17,7 +19,8 @@ class ColorFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'value' => fake()->colorName(),
+            'product_id' => Product::factory()->create(),
         ];
     }
 }

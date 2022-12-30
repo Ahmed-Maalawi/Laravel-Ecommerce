@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Resources;
+namespace App\Http\Resources\Category;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class BrandResource extends JsonResource
+class SubCategoryResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,7 +17,11 @@ class BrandResource extends JsonResource
         return [
             'id' => $this['id'],
             'name' => $this['name'],
-            'brand_img' => url($this['brand_img'])
+            'category' => [
+                'id' => $this['category']['id'],
+                'name' => $this['category']['name'],
+                'category_img' => url($this['category']['category_img']),
+            ],
         ];
     }
 }

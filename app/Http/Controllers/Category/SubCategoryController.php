@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Category;
 
 use App\Http\Requests\Category\StoreSubCategoryRequest;
+use App\Http\Resources\Category\SubCategoryResource;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
@@ -19,12 +20,12 @@ class SubCategoryController extends Controller
      */
     public function index()
     {
-        $allSubCategories = SubCategory::with('category')->all();
+        $allSubCategories = SubCategory::with('category')->get();
 
         return response()->json([
             'status' => 'success',
             'message' => 'get all sub-categories',
-            'data' => $allSubCategories
+            'data' => SubCategoryResource::collection($allSubCategories)
         ]);
     }
 
@@ -70,7 +71,7 @@ class SubCategoryController extends Controller
         return response()->json([
             'status' => 'success',
             'message' => 'sub category info',
-            'data' => $subCategory
+            'data' => SubCategoryResource::make($subCategory)
         ]);
     }
 

@@ -14,9 +14,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('colors', function (Blueprint $table) {
+        Schema::create('product_images', function (Blueprint $table) {
             $table->id();
-            $table->string('value');
+            $table->string('image_path');
             $table->foreignIdFor(Product::class, 'product_id')->constrained('products')->cascadeOnDelete();
             $table->timestamps();
         });
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('colors');
+        Schema::dropIfExists('product_images');
     }
 };
