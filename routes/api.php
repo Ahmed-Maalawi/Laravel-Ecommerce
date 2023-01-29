@@ -1,10 +1,14 @@
 <?php
 
+use App\Http\Controllers\cart\shoppingCartItemController;
 use App\Http\Controllers\Category\SubCategoryController;
 use App\Http\Controllers\Category\CategoryController;
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\favourite\FavouriteController;
+use App\Http\Controllers\Order\orderStatusController;
+use App\Http\Controllers\payment\paymentTypeController;
 use App\Http\Controllers\Product\ProductController;
+use App\Http\Controllers\shipping\shippingMethodController;
 use App\Http\Controllers\User\UserAuthController;
 use App\Http\Controllers\Brand\BrandController;
 use Illuminate\Support\Facades\Route;
@@ -137,4 +141,66 @@ Route::controller(FavouriteController::class)->prefix('favourite')->group(functi
     Route::post('add/{id}', 'store')->name('favourite.add');
     Route::delete('remove/{id}', 'destroy')->name('favourite.remove');
 
+});
+
+
+/**
+|--------------------------------------------------------------------------
+| API Routes For payment type
+|--------------------------------------------------------------------------
+ */
+
+Route::controller(paymentTypeController::class)->prefix('paymentType')->group(function (){
+    Route::get('all', 'index')->name('payment.all');
+    Route::post('add', 'store')->name('payment.store');
+    Route::get('view/{id}', 'show')->name('payment.show');
+    Route::post('update/{id}', 'update')->name('payment.update');
+    Route::delete('delete/{id}', 'destroy')->name('payment.delete');
+
+});
+
+
+/**
+|--------------------------------------------------------------------------
+| API Routes For order status
+|--------------------------------------------------------------------------
+ */
+
+Route::controller(orderStatusController::class)->prefix('orderStatus')->group(function (){
+    Route::get('all', 'index')->name('status.all');
+    Route::post('add/{id}', 'store')->name('status.store');
+    Route::get('view/{id}', 'show')->name('status.show');
+    Route::post('update/{id}', 'update')->name('status.update');
+    Route::delete('delete/{id}', 'destroy')->name('status.delete');
+
+});
+
+
+/**
+|--------------------------------------------------------------------------
+| API Routes For shipping method
+|--------------------------------------------------------------------------
+ */
+
+Route::controller(shippingMethodController::class)->prefix('shippingMethod')->group(function (){
+    Route::get('all', 'index')->name('shipping.all');
+    Route::post('add/{id}', 'store')->name('shipping.store');
+    Route::get('view/{id}', 'show')->name('shipping.show');
+    Route::post('update/{id}', 'update')->name('shipping.update');
+    Route::delete('delete/{id}', 'destroy')->name('shipping.delete');
+});
+
+
+/**
+|--------------------------------------------------------------------------
+| API Routes For shopping cart items
+|--------------------------------------------------------------------------
+ */
+
+Route::controller(shoppingCartItemController::class)->prefix('shoppingCartItem')->group(function (){
+    Route::get('all', 'index')->name('shipping.all');
+    Route::post('add/{id}', 'store')->name('shipping.store');
+    Route::get('view/{id}', 'show')->name('shipping.show');
+    Route::post('update/{id}', 'update')->name('shipping.update');
+    Route::delete('delete/{id}', 'destroy')->name('shipping.delete');
 });

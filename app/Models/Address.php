@@ -14,8 +14,8 @@ class Address extends Model
     ];
 
 
-    public function userIDs()
+    public function user()
     {
-        return $this->hasMany(UserAddress::class, 'address_id', 'id');
+        return $this->belongsTo(User::class);
     }
 }

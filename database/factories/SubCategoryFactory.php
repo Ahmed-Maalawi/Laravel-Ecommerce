@@ -18,7 +18,7 @@ class SubCategoryFactory extends Factory
     {
         return [
             'name' => fake()->text(),
-            'category_id' => fake()->numberBetween(1, 2)
+//            'category_id' => fake()->numberBetween(1, 2)
         ];
     }
 }

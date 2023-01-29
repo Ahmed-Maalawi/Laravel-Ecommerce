@@ -1,7 +1,6 @@
 <?php
 
-use App\Models\Address;
-use App\Models\User;
+use App\Models\Product;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,10 +14,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('user_addresses', function (Blueprint $table) {
+        Schema::create('product_thumbnails', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(User::class, 'user_id')->constrained('users');
-            $table->foreignIdFor(Address::class, 'address_id')->constrained('addresses');
+            $table->string('img_path');
+            $table->foreignIdFor(Product::class,'product_id')->constrained('products')->cascadeOnDelete();
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_addresses');
+        Schema::dropIfExists('product_thumbnails');
     }
 };

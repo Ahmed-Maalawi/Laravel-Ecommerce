@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Models\product;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Product;
 
-class ProductImage extends Model
+class ProductThumbnail extends Model
 {
     use HasFactory;
 

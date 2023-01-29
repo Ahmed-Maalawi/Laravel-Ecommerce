@@ -14,13 +14,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('addresses', function (Blueprint $table) {
+        Schema::create('shopping_carts', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 45);
-            $table->string('address');
-            $table->string('phone');
-            $table->foreignIdFor(User::class,'user_id')->constrained('users')->cascadeOnDelete();
-            $table->boolean('is_default')->default(false);
+            $table->foreignIdFor(User::class, 'user_id')->constrained('users')->cascadeOnDelete();
             $table->timestamps();
         });
     }
@@ -32,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('addresses');
+        Schema::dropIfExists('shopping_carts');
     }
 };

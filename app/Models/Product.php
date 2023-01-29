@@ -20,9 +20,9 @@ class Product extends Model
       'brand_id'
     ];
 
-    public function images()
+    public function humbnails()
     {
-        return $this->hasMany(ProductImage::class);
+        return $this->hasMany(ProductThumbnail::class);
     }
 
     public function colors()
